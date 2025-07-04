@@ -1,0 +1,54 @@
+<app-register-layout
+  primaryBtnText="Registrar"
+  (submit)="submit()"
+  secondaryBtnText="Voltar">
+  <form [formGroup]="registerForm" (submit)="submit()">
+    <div class="form-title-container">
+      <h5>Cadastrar Usuário</h5>
+    </div>
+
+    <div *ngIf="enviado && registerForm.get('nome')?.errors" class="error">
+      <small *ngIf="registerForm.get('nome')?.errors?.['required']">Nome é obrigatório.</small>
+      <small *ngIf="registerForm.get('nome')?.errors?.['minlength']">Nome deve ter ao menos 3 caracteres.</small>
+    </div>
+    <app-primary-input
+      formControlName="nome"
+      inputName="nome"
+      label="Nome"
+      type="text"
+    ></app-primary-input>
+
+    <div *ngIf="enviado && registerForm.get('cpf')?.errors" class="error">
+      <small *ngIf="registerForm.get('cpf')?.errors?.['required']">CPF é obrigatório.</small>
+      <small *ngIf="registerForm.get('cpf')?.errors?.['pattern']">Formato inválido. Use 000.000.000-00.</small>
+    </div>
+    <app-primary-input
+      formControlName="cpf"
+      inputName="cpf"
+      label="CPF"
+      type="text"
+    ></app-primary-input>
+
+    <div *ngIf="enviado && registerForm.get('email')?.errors" class="error">
+      <small *ngIf="registerForm.get('email')?.errors?.['required']">Email é obrigatório.</small>
+      <small *ngIf="registerForm.get('email')?.errors?.['email']">Email inválido.</small>
+    </div>
+    <app-primary-input
+      formControlName="email"
+      inputName="email"
+      label="Email"
+      type="email"
+    ></app-primary-input>
+
+    <div *ngIf="enviado && registerForm.get('password')?.errors" class="error">
+      <small *ngIf="registerForm.get('password')?.errors?.['required']">Senha é obrigatório.</small>
+      <small *ngIf="registerForm.get('password')?.errors?.['password']">Senha inválido (mínimo 6 dígitos).</small>
+    </div>
+    <app-primary-input
+      formControlName="senha"
+      inputName="senha"
+      type="password"
+      label="Senha"
+    ></app-primary-input>
+  </form>
+</app-register-layout>

@@ -1,0 +1,102 @@
+<app-cadastro-paciente-layout>
+  <form [formGroup]="pacienteForm" (submit)="submit()">
+    <div class="form-title-container">
+      <h1 class="form-title">Cadastrar Paciente</h1>
+    </div>
+
+    <div *ngIf="enviado && pacienteForm.get('nome')?.errors" class="error">
+      <small *ngIf="pacienteForm.get('nome')?.errors?.['required']">Nome é obrigatório.</small>
+      <small *ngIf="pacienteForm.get('nome')?.errors?.['minlength']">Nome deve ter ao menos 3 caracteres.</small>
+    </div>
+    <app-primary-input
+      formControlName="nome"
+      inputName="nome"
+      label="Nome"
+      type="text"
+    ></app-primary-input>
+
+    <div *ngIf="enviado && pacienteForm.get('cpf')?.errors" class="error">
+      <small *ngIf="pacienteForm.get('cpf')?.errors?.['required']">CPF é obrigatório.</small>
+      <small *ngIf="pacienteForm.get('cpf')?.errors?.['pattern']">Formato inválido. Use 000.000.000-00.</small>
+    </div>
+    <app-primary-input
+      formControlName="cpf"
+      inputName="cpf"
+      label="CPF"
+      type="text"
+    ></app-primary-input>
+
+    <div *ngIf="enviado && pacienteForm.get('dataNascimento')?.errors" class="error">
+      <small>Data de nascimento é obrigatória.</small>
+    </div>
+    <app-primary-input
+      formControlName="dataNascimento"
+      inputName="dataNascimento"
+      label="Data de Nascimento"
+      type="date"
+    ></app-primary-input>
+
+    <div class="form-group">
+      <div *ngIf="enviado && pacienteForm.get('sexo')?.errors" class="error">
+        <small>Sexo é obrigatório.</small>
+      </div>
+      <label for="sexo">Sexo:</label>
+      <select formControlName="sexo" id="sexo">
+        <option value="" disabled selected>Selecione</option>
+        <option value="M">Masculino</option>
+        <option value="F">Feminino</option>
+      </select>
+    </div>
+
+    <div *ngIf="enviado && pacienteForm.get('telefone')?.errors" class="error">
+      <small>Telefone é obrigatório.</small>
+    </div>
+    <app-primary-input
+      formControlName="telefone"
+      inputName="telefone"
+      label="Telefone"
+      type="tel"
+    ></app-primary-input>
+
+    <div *ngIf="enviado && pacienteForm.get('email')?.errors" class="error">
+      <small *ngIf="pacienteForm.get('email')?.errors?.['required']">Email é obrigatório.</small>
+      <small *ngIf="pacienteForm.get('email')?.errors?.['email']">Email inválido.</small>
+    </div>
+    <app-primary-input
+      formControlName="email"
+      inputName="email"
+      label="Email"
+      type="email"
+    ></app-primary-input>
+
+    <app-primary-input
+      formControlName="endereco"
+      inputName="endereco"
+      label="Endereço"
+    ></app-primary-input>
+
+    <div class="form-row">
+      <div *ngIf="enviado && pacienteForm.get('cidade')?.errors" class="error">
+      <small *ngIf="pacienteForm.get('cidade')?.errors?.['required']">Cidade é obrigatório.</small>
+    </div>
+      <app-primary-input
+        formControlName="cidade"
+        inputName="cidade"
+        label="Cidade"
+      ></app-primary-input>
+
+      <div *ngIf="enviado && pacienteForm.get('estado')?.errors" class="error">
+      <small *ngIf="pacienteForm.get('estado')?.errors?.['required']">Estado é obrigatório.</small>
+      <small *ngIf="pacienteForm.get('estado')?.errors?.['estado']">Formato inválido. Ex: 'CE'/'SP'</small>
+    </div>
+      <app-primary-input
+        formControlName="estado"
+        inputName="estado"
+        label="Estado"
+        type="text"
+      ></app-primary-input>
+  </div>
+
+    <button type="submit">Cadastrar Paciente</button>
+  </form>
+</app-cadastro-paciente-layout>

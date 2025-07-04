@@ -1,0 +1,23 @@
+<app-login-layout
+  primaryBtnText="Entrar"
+  (submit)="submit()"
+  secondaryBtnText="Registrar"
+>
+  <form [formGroup]="loginForm">
+    <app-primary-input
+      formControlName="email"
+      inputName="email"
+      type="email"
+      label="Email"
+      placeHolder="joaoninguem@gmail.com"
+    ></app-primary-input>
+
+    <app-primary-input
+      formControlName="password"
+      inputName="password"
+      type="password"
+      label="Senha"
+    ></app-primary-input>
+    <span>Esqueceu a senha?</span>
+  </form>
+</app-login-layout>

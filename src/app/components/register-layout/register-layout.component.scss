@@ -1,0 +1,90 @@
+@use '../../../styles/variables' as *;
+
+main {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  padding: 1rem;
+
+  background:
+    radial-gradient(circle at 20% 20%, rgba($primary-color, 0.4), transparent 40%),
+    radial-gradient(circle at 80% 80%, rgba($secondary-color, 0.35), transparent 40%),
+    radial-gradient(circle at 50% 150%, rgba(255, 255, 255, 0.1), transparent 70%),
+    linear-gradient(135deg, $primary-color, $secondary-color);
+
+  background-blend-mode: overlay, overlay, overlay, normal;
+  background-size: 160% 160%;
+  animation: floatBackground 15s infinite alternate;
+
+  font-family: 'Segoe UI', sans-serif;
+  color: #fff;
+}
+
+@keyframes floatBackground {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
+}
+
+.form-section {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 0.2;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 35px;
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+
+  max-width: 400px;
+  width: 100%;
+}
+
+.form-section img {
+  margin-bottom: 30px;
+}
+
+.form-section h2 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 45px;
+}
+
+.btn-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 30px;
+}
+
+.btn-wrapper button {
+  width: 100%;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 12px 24px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-wrapper .btn-primary {
+  background-color: $primary-color;
+  color: white;
+  box-shadow:
+    0 2px 4px 0 rgba(37, 141, 167, 0.3),
+    0 6px 10px 0 rgba(22, 87, 104, 0.25);
+  transition: background-color 0.2s ease;
+}
+
+.btn-wrapper .btn-primary:hover {
+  background-color: darken($primary-color, 5%);
+}

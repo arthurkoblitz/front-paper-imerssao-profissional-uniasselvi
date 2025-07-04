@@ -1,0 +1,10 @@
+<div class="card">
+  <div class="buttons">
+    <button *ngFor="let btn of data?.buttons" (click)="goToPage(btn.route)">
+      <div class="button-information">
+        <mat-icon *ngIf="btn.matIcon" [fontIcon]="btn.matIcon"></mat-icon>
+        <span *ngIf="btn.label">{{ btn.label }}</span>
+      </div>
+    </button>
+  </div>
+</div>

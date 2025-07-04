@@ -1,0 +1,14 @@
+<nav class="navbar">
+  <ul class="navbar-menu">
+    <li *ngFor="let item of menuItems" class="navbar-item">
+      <a [routerLink]="getRouterLink(item.action)" class="navbar-link">
+        <span *ngIf="!item.matIcon">{{ item.label }}</span>
+        <mat-icon *ngIf="item.matIcon" [fontIcon]="item.matIcon"></mat-icon>
+      </a>
+    </li>
+  </ul>
+
+  <button class="navbar-logout-button" (click)="logout()">
+    <mat-icon fontIcon="logout"></mat-icon>
+  </button>
+</nav>
